@@ -1,5 +1,25 @@
 #include <bits/stdc++.h>
 #include "stats.h"
+int getNaNcount(const std::vector<double>& numericaldata)
+{   int count=0;
+    for (auto& ptr : numericaldata) 
+        { 
+        if(std::isnan(ptr))
+            count++;
+        }
+    return count;
+}
+
+std::vector<double> getNaNremoveddata(numericaldata)
+{
+        std::vector<double> nanremoved;
+            for(double num : numericaldata)
+            {
+                if(!std::isnan(num))
+                    nanremoved.push_back(num);
+            }
+    return nanremoved;
+}
 double calculateAverage(const std::vector<double>& data)
 {
     double sum = 0;
@@ -46,13 +66,8 @@ Stats Statistics:: ComputeStatistics(const std::vector<double>& numericaldata)
     }
     else
     {
-        for (auto& ptr : numericaldata) 
-        { 
-        if(std::isnan(ptr))
-            nancount++;
-        else
-            numbercount++;                
-        }
+        int nancount = getNaNcount(numericaldata);
+        int numbercount = numericaldata.size() - nancount;
         if(nancount>=numbercount)
         {
             stats.average = std::nan("");
@@ -61,12 +76,7 @@ Stats Statistics:: ComputeStatistics(const std::vector<double>& numericaldata)
         }
         else
         {
-            std::vector<double> nanremoveddata;
-            for(double num : numericaldata)
-            {
-                if(!std::isnan(num))
-                    nanremoveddata.push_back(num);
-            }
+            std::vector<double> nanremoveddata = getNaNremoveddata(numericaldata);
             stats.average = calculateAverage(nanremoveddata);
             stats.max = findMax(nanremoveddata);
             stats.min = findMin(nanremoveddata);
