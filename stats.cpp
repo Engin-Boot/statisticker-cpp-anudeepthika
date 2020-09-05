@@ -69,7 +69,7 @@ Stats Statistics:: ComputeStatistics(const std::vector<double>& numericaldata)
             }
             stats.average = calculateAverage(nanremoveddata);
             stats.max = findMax(nanremoveddata);
-            stats.max = findMin(nanremoveddata);
+            stats.min = findMin(nanremoveddata);
         }
         return stats;
     }
