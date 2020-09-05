@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 #include "stats.h"
 int getNaNcount(const std::vector<double>& numericaldata)
-{   int count=0;
+{   
+    int count=0;
     for (auto& ptr : numericaldata) 
         { 
         if(std::isnan(ptr))
@@ -10,7 +11,7 @@ int getNaNcount(const std::vector<double>& numericaldata)
     return count;
 }
 
-std::vector<double> getNaNremoveddata(numericaldata)
+std::vector<double> getNaNremoveddata(const std::vector<double>& numericaldata)
 {
         std::vector<double> nanremoved;
             for(double num : numericaldata)
@@ -55,8 +56,6 @@ Stats Statistics:: ComputeStatistics(const std::vector<double>& numericaldata)
 {
     //Implement statistics here
     Stats stats;
-    int nancount=0;
-    int numbercount=0;
     if(numericaldata.size()==0)
     {
         stats.average = std::nan("");
