@@ -48,7 +48,7 @@ Stats Statistics:: ComputeStatistics(const std::vector<double>& numericaldata)
     {
         for (auto& ptr : numericaldata) 
         { 
-        if(isnan(ptr))
+        if(std::isnan(ptr))
             nancount++;
         else
             numbercount++;                
@@ -64,7 +64,7 @@ Stats Statistics:: ComputeStatistics(const std::vector<double>& numericaldata)
             std::vector<double> nanremoveddata;
             for(double num : numericaldata)
             {
-                if(!isnan(num))
+                if(!std::isnan(num))
                     nanremoveddata.push_back(num);
             }
             stats.average = calculateAverage(nanremoveddata);
