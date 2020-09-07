@@ -32,24 +32,24 @@ double calculateAverage(const std::vector<double>& data)
 
 double findMax(const std::vector<double>& data)
 {
-    double max = INT_MIN;
+    /*double max = INT_MIN;
     for(double itr : data)
     {
         if(itr>max)
             max = itr;
-    }
-    return max;
+    }*/
+    return *max_element(data.begin(), data.end());
 }
 
 double findMin(const std::vector<double>& data)
 {
-    double min = INT_MAX;
+    /*double min = INT_MAX;
     for(double itr : data)
     {
         if(itr<min)
             min = itr;
-    }
-    return min;
+    }*/
+    return *min_element(data.begin(), data.end());
 }
 
 Stats Statistics:: ComputeStatistics(const std::vector<double>& numericaldata) 
